@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/1d33780d26.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="../CSS/login.css">
+    <script src="../Scripts/Validar.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Login Let's Rock</title>
+</head>
+<body>
+    <main class="container">
+        <h2><i class="fas fa-drum"></i> Login Let's Rock</h2>
+        <form name="formLogin" action="../php/verifica.php" method="POST">
+            
+            <div class="input-field">
+                <i class="fas fa-at"></i>
+                <input type="text" name="email" id="email" placeholder="Insira seu E-mail" required>
+            <div class="underline"></div>
+            </div>
+
+            <div class="input-field">
+                <i class="fas fa-key"></i>
+                <input type="password" name="senha" id="senha" placeholder="Insira sua senha" required>
+            <div class="underline"></div>
+            </div>
+
+            <input type="submit" onclick="return validarLogin()">
+        </form>
+
+        <div class="footer">
+            <spam>Ou cadastre-se</spam>
+        <div class="social-field">
+            <div class="social-field google">
+                <a href="../php/cadastro.php"> 
+                    <i class="fas fa-arrow-left"></i>
+                     Cadastre-se agora
+                </a>
+            </div>
+        </div>
+        </div>
+    </main>
+</body>
+</html>
