@@ -16,9 +16,9 @@
     if( !empty($resultado) ){
         
         session_start();
+        
         $_SESSION["usuario"] = $resultado[0]["nome"];
         $_SESSION["email"] = $resultado[0]["email"];
-        $_SESSION["pais"] = $resultado[0]["pais"];
         $_SESSION["estado"] = $resultado[0]["estado"];
         $_SESSION["cidade"] = $resultado[0]["cidade"];
         

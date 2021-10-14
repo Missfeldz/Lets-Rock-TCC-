@@ -7,12 +7,20 @@
         echo $e->getMessage();
     }
     
-    $stmt = $conexao->prepare("insert into banda (nomeBanda,paisBanda,estadoBanda,cidadeBanda) VALUES (:nomeBanda,:paisBanda,:estadoBanda,:cidadeBanda)");
+    $stmt = $conexao->prepare("insert into banda (nomeBanda,estadoBanda,cidadeBanda) VALUES (:nomeBanda,:estadoBanda,:cidadeBanda)");
     $stmt->bindValue(":nomeBanda", $_POST["nomeBanda"]);
-    $stmt->bindValue(":paisBanda", $_POST["paisBanda"]);
-    $stmt->bindValue(":estadoBanda", $_POST["estadoBanda"]);
-    $stmt->bindValue(":cidadeBanda", $_POST["cidadeBanda"]);
+    $stmt->bindValue(":estadoBanda", $_POST["estado"]);
+    $stmt->bindValue(":cidadeBanda", $_POST["cidade"]);
     $stmt->execute();
+
+    $stmt2 = $conexao->prepare("insert into banda_genero (banda_idbanda, genero_idgenero) VALUES (:banda_idbanda ,:genero_idgenero)");
+    $stmt2->bindValue(":banda_idbanda", $_POST["idbanda"]);
+    $stmt2->bindValue(":genero_idgenero", $_POST["idgenero"]);
+    $stmt2->execute();
+
+    $stmt3 = $conexao->prepare("insert into musico_banda (idmusico, idbanda, data_entrada, data_saida, idinstrumento, estado) VALUES (:idmusico, :banda_idbanda, :data_entrada, :data_saida, :idinstrumento, :estado)");
+    $stmt3->execute();
+
     
     header("location: dashbord.php");
     

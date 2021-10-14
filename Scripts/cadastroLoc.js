@@ -22,24 +22,6 @@ $(document).ready(function(){
         });
     });
     
-   /*$.ajax({
-        url:"https://servicodados.ibge.gov.br/api/v1/localidades/paises",
-        type:"GET",
-        data: {
-        orderBy: "nome"
-    },
-        
-    success: function(paises){
-        var i;
-        var opcoes = "";
-        for(i=0; i<paises.length; i++){
-            opcoes = opcoes + "<option value='"+paises[i].id+"'>"+paises[i].nome+"</option>"
-            }
-            $("#sltPais").html(opcoes);
-            $("#sltEstados").trigger("change");
-        },
-    }); */
-
         $.ajax({
             url:"https://servicodados.ibge.gov.br/api/v1/localidades/estados",
             type:"GET",

@@ -36,17 +36,13 @@
                 <h1>Suas Informações: </h1> 
                 <p><i class="fas fa-signature"></i> Seu nome = <?php echo $_SESSION["usuario"]?> </p> 
                 <p><i class="fas fa-at"></i> Seu email = <?php echo $_SESSION["email"]?></p> 
-                <p><i class="fas fa-globe-americas"></i> Seu instrumento = <?php echo $_SESSION["pais"]?></p>
-                <p><i class="fas fa-flag-usa"></i> Seu genero musical = <?php echo $_SESSION["estado"]?></p>
-                
                 <br>
 
                 <a href="alterar.php"> Alterar Dados </a>
                 <br>
                 <a href="deleteConfirm.php"> Deletar Conta </a>
                 <br>
-                <a href="listar.php"> Visualizar Musicos </a>
-                
+                <a href="cadastroBanda.php"> Cadastrar Banda </a>
 
             </div>
     </div>

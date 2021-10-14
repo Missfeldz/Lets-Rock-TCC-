@@ -25,7 +25,6 @@
     <script src="https://kit.fontawesome.com/1d33780d26.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="../CSS/cadastro.css">
     <script src="../Scripts/Validar.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <title>Cadastro Let's Rock</title>
 </head>

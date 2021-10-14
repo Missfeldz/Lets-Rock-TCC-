@@ -14,6 +14,9 @@
     $stmt->bindValue(":estado", $_POST["estado"]);
     $stmt->bindValue(":cidade", $_POST["cidade"]);
     $stmt->execute();
+
+    $stmt4 = $conexao->prepare("select idmusico from musico where email = :email");
+    $stmt4->execute();
     
     $stmt2 = $conexao->prepare("insert into musico_instrumento (idinstrumento, idmusico) VALUES (:idinstrumento, :idmusico)");
     $stmt2->bindValue(":idinstrumento", $_POST["idinstrumento"]);
@@ -24,6 +27,8 @@
     $stmt3->bindValue(":idgenero", $_POST["idgenero"]);
     $stmt3->bindValue(":idmusico", $_POST["idmusico"]);
     $stmt3->execute();
+
+
 
     header("location: ../HTML/login.html");
     
