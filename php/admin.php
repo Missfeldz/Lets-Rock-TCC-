@@ -9,24 +9,22 @@
     <title>Admin Controle</title>
 </head>
 <body>
-    <main class="container">
-        <h2>Cadastre Instrumento</h2>
+<main class="container">
+    <div>
+        <h3>Cadastrar Instrumento</h3>
         <form name="instrumento" action="inserirInstrumento.php" method="POST">
-            <label for="instrumento">Insira o Instrumento: </label>
             <input type="text" name="instrumento">
             <input type="submit" value="cadastrar" onclick="return alertAdmin()">
         </form> 
 
         <br>
 
-        <h2>Cadastre Genero</h2>
+        <h3>Cadastrar Genero</h3>
         <form name="genero" action="inserirGenero.php" method="POST">
-            <label for="genero">Insira o Genero: </label>
             <input type="text" name="genero">
             <input type="submit" value="cadastrar" onclick="return alertAdmin()">
         </form>
-
+    </div>
     </main>
 </body>
-
 </html>

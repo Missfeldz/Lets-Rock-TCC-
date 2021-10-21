@@ -1,4 +1,5 @@
 <?php 
+    //DB Connection//
      date_default_timezone_set("America/Sao_Paulo");
 
      try{
@@ -9,11 +10,13 @@
 ?>
 
 <?php
-    session_start();
-    if( !isset($_SESSION["usuario"],$_SESSION["email"]) ) {
-        header("location: ../HTML/");
-    }
-    
+    $stmt = $conexao->prepare("select * from instrumento");
+    $stmt->execute();   
+    $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $stmt2 = $conexao->prepare("select * from genero");
+    $stmt2->execute();
+    $resultado2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -24,32 +27,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/1d33780d26.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="../CSS/cadastroBanda.css">
-    <title>Cadastro Banda</title>
+    <title>Genêro e instrumento</title>
 </head>
 <body>
     <main class="container">
-        <h2><i class="fas fa-drum"></i> Cadastro Banda Let's Rock</h2>
-        <form action="../php/verificaB.php" method="POST">
-
-            <div class="input-field">
-                <i class="fas fa-signature"></i>
-                <input type="text" name="nomeBanda" id="nomeBanda" placeholder="Insira o nome da Banda" required>
+        <h2><i class="fas fa-drum"></i> Cadastro  Let's Rock</h2>
+        <form action="verificaInsGen.php" method="POST">
+        
+        <div class="input-field">
+                <i class="fas fa-guitar"></i>
+                <select id="idinstrumento" name="idinstrumento" class="js-example-basic-single" style="width: 250px;" required>
+                    <?php foreach ($resultado as $value) { ?>
+                        <option value="<?php echo $value['idinstrumento'];?>"> <?php echo $value['descIns'];?> </option>
+                    <?php }; ?>
+                </select>
             <div class="underline"></div>
             </div>
-
-            <div class="input-field">
-                <i class="fas fa-flag-usa"></i>
-                <select id="sltEstados" name="estado" class="js-example-basic-single" style="width: 250px;"  required></select>
+           
+             <div class="input-field">
+                <i class="fas fa-music"></i>
+                <select id="idgenero" name="idgenero" class="js-example-basic-single" style="width: 250px;"  required>
+                    <?php foreach ($resultado2 as $value2) { ?>
+                            <option value="<?php echo $value2['idgenero'];?>"> <?php echo $value2['descGen'];?> </option>
+                        <?php }; ?>
+                </select>
             <div class="underline"></div>
-            </div>
+            </div> 
 
-            <div class="input-field">
-                <i class="fas fa-city"></i>
-                <select id="sltCidades" name="cidade" class="js-example-basic-single" style="width: 250px;"  required></select>
-            <div class="underline"></div>
-            </div>
-
-            <input type="submit" value="Continuar" onclick="return alertBanda()">
+            <input type="submit" value="Continuar">
         </form>
 
         <div class="footer">
@@ -58,7 +63,7 @@
             <div class="social-field google">
                 <a href="dashbord.php">
                     <i class="fas fa-arrow-right"></i>
-                    Voltar  
+                    Voltar
                 </a>
             </div>
         </div>    
@@ -69,5 +74,4 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src= "../Scripts/cadastroLoc.js"></script>
-    <script src= "../Scripts/Alerts.js"></script>
 </html>

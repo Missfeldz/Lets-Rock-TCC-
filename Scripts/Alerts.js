@@ -6,3 +6,7 @@ function verificaAlterar(){
 function alertAdmin(){
     alert("Dado cadastrado com sucesso!");
 }
+
+function alertBanda(){
+    alert("Atenção o usuario que criar a banda automaticamente é o lider")
+}

@@ -5,6 +5,24 @@
     }
     
 ?>
+
+<?php 
+    //DB Connection//
+     date_default_timezone_set("America/Sao_Paulo");
+
+     try{
+         $conexao = new PDO("mysql: host=localhost; port=3306; dbname=letsbd","root","");
+     }catch(PDOExeption $e){
+         echo $e->getMessage();
+     }
+?>
+
+<?php
+    $stmt = $conexao->prepare("select idbanda, nomeBanda, estadoBanda cidadeBanda from banda where idlider = :idlider");
+    $stmt->bindValue(":idlider", $_SESSION["id"]);
+    $stmt->execute();
+    $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="br">
 <head>
@@ -13,7 +31,7 @@
     <script src="https://kit.fontawesome.com/1d33780d26.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="../CSS/dashcss.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Perfil</title>
+    <title>Perfil Banda</title>
 </head>
 <body>
     <div id="header">
@@ -32,29 +50,22 @@
     </div>
     <div id="container">
             <div id="content-container">
-                <h1> Bem vindo ao seu perfil <i><b><?php echo $_SESSION["usuario"]?></i></b></h1>
-                <h1>Suas Informações: </h1>
-                
-                <hr> 
-
-                <p><i class="fas fa-signature"></i> Seu nome = <?php echo $_SESSION["usuario"]?> </p> 
-                <p><i class="fas fa-at"></i> Seu email = <?php echo $_SESSION["email"]?></p> 
-                <p><i class="fas fa-key"></i> Sua senha = <?php echo $_SESSION["senha"]?></p>
-                <p><i class="fas fa-id-card"></i> Seu ID = <?php echo $_SESSION["id"]?></p>  
-                
+                <h1> Olá <i><b><?php echo $_SESSION["usuario"]?></i></b></h1>
                 <hr>
+                <h1>Suas bandas são: </h1>
+               
+              <p>  <?php foreach($resultado as $value){  ?> </p>
+              <p>  <?php echo " Nome = ".$value["nomeBanda"]; ?> </p>
+              <p>  <?php echo " ID = ".$value["idbanda"]; ?> </p>
+              <hr>
+              <?php echo "<br/>"; }; ?> 
+            
                 <h1> Suas Opções : </h1>
-                <a href="cadastrarInsGen.php"> Cadastrar Instrumento e Gênero </a>
+                <a href="listarMusicos.php"> Encontrar Musicos</a>
                 <br>
-                <a href="alterar.php"> Alterar Dados </a>
+                <a href ="alterarBanda.php"> Alterar dados </a>
                 <br>
-                <a href="deleteConfirm.php"> Deletar Conta </a>
-                <br>
-                <a href="cadastroBanda.php"> Cadastrar Banda </a>
-                <br>
-                <a href="dashBanda.php"> Ver suas Bandas </a>
-                <br>
-                <a href="#"> Encontrar Musicos e Bandas</a>
+                <a href ="deleteBanda.php"> Deletar bandas </a>
             </div>
     </div>
     
