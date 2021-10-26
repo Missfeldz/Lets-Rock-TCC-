@@ -16,17 +16,7 @@
          echo $e->getMessage();
      }
 ?>
-
-<?php
-    $stmt = $conexao->prepare("select * from instrumento");
-    $stmt->execute();   
-    $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    $stmt2 = $conexao->prepare("select * from genero");
-    $stmt2->execute();
-    $resultado2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
-?>
-
+    
 <!DOCTYPE html>
 <html lang="br">
 <head>
@@ -62,26 +52,6 @@
                 <select id="sltCidades" name="cidade" class="js-example-basic-single" style="width: 200px;" value="<?php echo $_SESSION["cidade"]?>" required></select>
             <div class="underline"></div>
             </div>
-
-            <div class="input-field">
-                <i class="fas fa-guitar"></i>
-                <select id="idinstrumento" name="idinstrumento" class="js-example-basic-single" style="width: 250px;" required>
-                    <?php foreach ($resultado as $value) { ?>
-                        <option value="<?php echo $value['idinstrumento'];?>"> <?php echo $value['descIns'];?> </option>
-                    <?php }; ?>
-                </select>
-            <div class="underline"></div>
-            </div>
-           
-             <div class="input-field">
-                <i class="fas fa-music"></i>
-                <select id="idgenero" name="idgenero" class="js-example-basic-single" style="width: 250px;"  required>
-                    <?php foreach ($resultado2 as $value2) { ?>
-                            <option value="<?php echo $value2['idgenero'];?>"> <?php echo $value2['descGen'];?> </option>
-                        <?php }; ?>
-                </select>
-            <div class="underline"></div>
-            </div> 
 
             <input type="submit" value="Alterar Dados">
         </form>

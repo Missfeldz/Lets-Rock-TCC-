@@ -41,14 +41,22 @@
 
 <?php 
 
-    $stmt = $conexao->prepare("select idmusico, nome from musico");
+    $stmt = $conexao->prepare("select idmusico, nome, email, estado, cidade from musico");
     $stmt->execute();   
     $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     foreach($resultado as $value){
-        echo " ID = ".$value['idmusico'];
+        echo " ID = ".$value["idmusico"];
         echo "<br/>";
-        echo " Nome = ".$value['nome'];
+        echo " Nome = ".$value["nome"];
+        echo "<br/>";
+        echo " Email = ".$value["email"];
+        echo "<br/>";
+        echo " Estado = ".$value["estado"];
+        echo "<br/>";
+        echo " Cidade = ".$value["cidade"];
+        echo "<br/>";
+        echo "<a title='Convidar' href='conviteMusico.php?idmusico={$value["idmusico"]}'> Convidar </a>";
         echo "<hr>";
     };
 ?>

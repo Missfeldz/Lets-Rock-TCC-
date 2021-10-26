@@ -54,7 +54,7 @@
                 <br>
                 <a href="dashBanda.php"> Ver suas Bandas </a>
                 <br>
-                <a href="#"> Encontrar Musicos e Bandas</a>
+                <a href="listarBandas.php"> Encontrar Bandas</a>
             </div>
     </div>
     

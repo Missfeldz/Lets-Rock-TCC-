@@ -63,9 +63,9 @@
                 <h1> Suas Opções : </h1>
                 <a href="listarMusicos.php"> Encontrar Musicos</a>
                 <br>
-                <a href ="alterarBanda.php"> Alterar dados </a>
+                <a href ="selectBandaalt.php"> Alterar dados </a>
                 <br>
-                <a href ="deleteBanda.php"> Deletar bandas </a>
+                <a href ="selectBandadel.php"> Deletar bandas </a>
             </div>
     </div>
     

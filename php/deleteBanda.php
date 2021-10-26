@@ -5,6 +5,7 @@
     }
 ?>
 
+
 <?php
     date_default_timezone_set("America/Sao_Paulo");
 
@@ -14,4 +15,12 @@
         echo $e->getMessage();
     }
     
+    $stmt = $conexao->prepare("Delete FROM banda WHERE idbanda = :idbanda");
+    $stmt->bindValue(":idbanda", $_POST["idbanda"]);
+    $stmt->execute();
+    
+    header("location: ../HTML/");
+    
+        
+   
 ?>
