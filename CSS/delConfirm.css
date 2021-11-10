@@ -20,9 +20,8 @@ body {
 
 main.container {
     background: white;
-    width: 400px;
-    max-width: 600px;
-    min-height: 40vh;
+    width: 350px;
+    height: 300px;
     padding: 2rem;
     border-radius: 8px;
 }

@@ -16,7 +16,7 @@
     }
     
     $stmt = $conexao->prepare("Delete FROM banda WHERE idbanda = :idbanda");
-    $stmt->bindValue(":idbanda", $_POST["idbanda"]);
+    $stmt->bindValue(":idbanda", $_GET["idbanda"]);
     $stmt->execute();
     
     header("location: ../HTML/");

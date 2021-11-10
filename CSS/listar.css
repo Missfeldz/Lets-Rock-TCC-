@@ -51,5 +51,10 @@
 }
 
 
-
+#container a{
+    text-align: center;
+    color: orangered;
+    font-size: 18px;
+    text-decoration: none;
+}
 

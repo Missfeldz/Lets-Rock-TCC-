@@ -1,10 +1,3 @@
-<?php
-    session_start();
-    if( !isset($_SESSION["usuario"],$_SESSION["email"]) ) {
-        header("location: ../HTML/");
-    }
-?>
-
 <?php 
      date_default_timezone_set("America/Sao_Paulo");
 
@@ -23,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/1d33780d26.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="../CSS/listar.css">
-    <title>Listar Músicos</title>
+    <title>Relatório Bandas</title>
 </head>
 <body>
 
@@ -48,22 +41,21 @@
 
 <?php 
 
-    $stmt = $conexao->prepare("select idmusico, nome, email, estado, cidade from musico");
+    $stmt = $conexao->prepare("select idbanda, idlider, nomeBanda, estadoBanda, cidadeBanda from banda");
     $stmt->execute();   
     $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     foreach($resultado as $value){
-        echo " ID = ".$value["idmusico"];
+        echo " ID = ".$value["idbanda"];
         echo "<br/>";
-        echo " Nome = ".$value["nome"];
+        echo " ID Lider = ".$value["idlider"];
         echo "<br/>";
-        echo " Email = ".$value["email"];
+        echo " Nome = ".$value["nomeBanda"];
         echo "<br/>";
-        echo " Estado = ".$value["estado"];
+        echo " Estado = ".$value["estadoBanda"];
         echo "<br/>";
-        echo " Cidade = ".$value["cidade"];
+        echo " Cidade = ".$value["cidadeBanda"];
         echo "<br/>";
-        echo "<a title='Convidar' href='conviteMusico.php?idmusico={$value["idmusico"]}&idbanda={$_GET["idbanda"]}'> Convidar </a>";
         echo "<hr>";
     };
 ?>

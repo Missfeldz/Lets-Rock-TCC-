@@ -18,10 +18,12 @@
 ?>
 
 <?php
-    $stmt = $conexao->prepare("select idbanda, nomeBanda, estadoBanda cidadeBanda from banda where idlider = :idlider");
-    $stmt->bindValue(":idlider", $_SESSION["id"]);
-    $stmt->execute();
-    $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $stmt2 = $conexao->prepare("select idmusico, idbanda from musico_banda where idbanda = :idbanda and estado = 'ativo'");
+    $stmt2->bindValue(":idbanda", $_GET["idbanda"]);
+    $stmt2->execute();
+    $resultado2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 <!DOCTYPE html>
 <html lang="br">
@@ -31,7 +33,7 @@
     <script src="https://kit.fontawesome.com/1d33780d26.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="../CSS/dashcss.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil Banda</title>
+    <title>Gerenciar Banda</title>
 </head>
 <body>
     <div id="header">
@@ -50,24 +52,30 @@
     </div>
     <div id="container">
             <div id="content-container">
-                <h1> Olá <i><b><?php echo $_SESSION["usuario"]?></i></b></h1>
+                <h1> Gerenciar Banda</h1>
                 <hr>
-                <h1>Suas bandas são: </h1>
+                <h1>Seus membros: </h1>
                
-              <p>  <?php foreach($resultado as $value){  ?> </p>
-              <p>  <?php echo " Nome = ".$value["nomeBanda"]; ?> </p>
-              <p>  <?php echo " ID = ".$value["idbanda"]; ?> </p>
-              <p>  <?php echo "<a  href='verificaInsBanda.php?idbanda={$value["idbanda"]}'> Verificar Inscrições </a> "; ?> </p>
-              <p>  <?php echo "<a  href='listarMusicos.php?idbanda={$value["idbanda"]}'> Encontrar Musicos </a> "; ?> </p>
-              <p>  <?php echo "<a  href='cadastrarGenBanda.php?idbanda={$value["idbanda"]}'> Cadastrar Genero Musical da Banda </a> "; ?> </p>
-              <p>  <?php echo "<a  href='gerenciarBanda.php?idbanda={$value["idbanda"]}'> Gerenciar Banda </a> "; ?> </p>
-              <hr>
+              <p>  <?php foreach($resultado2 as $value2){  ?> </p>
+              <p>  <?php echo " ID musico = ".$value2["idmusico"]; ?> </p>
+                    <?php 
+                            $stmt3 = $conexao->prepare("select nome, email, estado, cidade from musico where idmusico = :idmusico");
+                            $stmt3->bindValue(":idmusico", $value2["idmusico"]);
+                            $stmt3->execute();
+                            $resultado3 = $stmt3->fetchAll(PDO::FETCH_ASSOC);
+                        ?>
+                    <p>  <?php foreach($resultado3 as $value3){  ?> </p>  
+                    <p>  <?php echo " Nome do Musico = ".$value3["nome"]; ?> </p>
+                    <p>  <?php echo " Email do Musico = ".$value3["email"]; ?> </p>   
+                    <p>  <?php echo " Estado do Musico = ".$value3["estado"]; ?> </p> 
+                    <p>  <?php echo " Cidade do Musico = ".$value3["cidade"]; ?> </p> 
+                    <p>  <?php echo "<a  href='deleteMusicoConfirm.php?idmusico={$value2["idmusico"]}&idbanda={$_GET["idbanda"]}'> Deletar Musico </a> "; ?> </p>
+                    <hr>
               <?php echo "<br/>"; }; ?> 
+              <?php  }; ?>
             
                 <h1> Suas Opções : </h1>
-                <a href ="selectBandaalt.php"> Alterar dados </a>
-                <br>
-                <a href ="selectBandadel.php"> Deletar bandas </a>
+
             </div>
     </div>
     

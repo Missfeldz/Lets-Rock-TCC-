@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if( !isset($_SESSION["usuario"],$_SESSION["email"]) ) {
+        header("location: ../HTML/");
+    }
+?>
+
 <?php 
      date_default_timezone_set("America/Sao_Paulo");
 
@@ -56,7 +63,7 @@
         echo "<br/>";
         echo " Cidade = ".$value["cidadeBanda"];
         echo "<br/>";
-        echo "<a title='Convidar' href='conviteBanda.php?idbanda={$value["idbanda"]}'> Inscrever-se </a>";
+        echo "<a title='Convidar' href='conviteBanda.php?idbanda={$value["idbanda"]}&idlider={$value["idlider"]}'> Inscrever-se </a>";
         echo "<hr>";
     };
 ?>

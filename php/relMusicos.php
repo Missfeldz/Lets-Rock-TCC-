@@ -1,10 +1,3 @@
-<?php
-    session_start();
-    if( !isset($_SESSION["usuario"],$_SESSION["email"]) ) {
-        header("location: ../HTML/");
-    }
-?>
-
 <?php 
      date_default_timezone_set("America/Sao_Paulo");
 
@@ -23,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/1d33780d26.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="../CSS/listar.css">
-    <title>Listar Músicos</title>
+    <title>Relatório Músicos</title>
 </head>
 <body>
 
@@ -63,7 +56,6 @@
         echo "<br/>";
         echo " Cidade = ".$value["cidade"];
         echo "<br/>";
-        echo "<a title='Convidar' href='conviteMusico.php?idmusico={$value["idmusico"]}&idbanda={$_GET["idbanda"]}'> Convidar </a>";
         echo "<hr>";
     };
 ?>

@@ -54,6 +54,8 @@
                 <br>
                 <a href="dashBanda.php"> Ver suas Bandas </a>
                 <br>
+                <a href="verificarInsMusico.php"> Ver seus convites </a>
+                <br>
                 <a href="listarBandas.php"> Encontrar Bandas</a>
             </div>
     </div>

@@ -5,7 +5,6 @@
     }
     
 ?>
-<?php echo $_POST["idbanda"];?>">
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -17,18 +16,17 @@
 </head>
 <body>
     <main class="container">
-        <h2>Você deseja deletar esta Banda?</h2>
+        <h2>Você deseja deletar este Musico?</h2>
             
-       
             <div class="input-field">
                 <i class="fas fa-check"></i>
-                <?php echo "<a  href='deleteBanda.php?idbanda={$_POST["idbanda"]}'> Deletar Banda </a> "; ?> </p>
+            <?php echo "<a  href='deleteMusico.php?idmusico={$_GET["idmusico"]}&idbanda={$_GET["idbanda"]}'> Deletar Musico </a> "; ?> </p>
             <div class="underline"></div>
             </div>
 
             <div class="input-field">
-                <i class="fas fa-times"></i> 
-                <a href = "dashBanda.php"> Não </a>
+                <i class="fas fa-times"></i>
+                <a href = "dashbord.php">Não </a>
             <div class="underline"></div>
             </div>
 
