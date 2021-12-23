@@ -3,9 +3,11 @@
     if( !isset($_SESSION["usuario"],$_SESSION["email"]) ) {
         header("location: ../HTML/");
     }
+    
 ?>
 
 <?php 
+    //DB Connection//
      date_default_timezone_set("America/Sao_Paulo");
 
      try{
@@ -16,16 +18,11 @@
 ?>
 
 <?php
-    
-    $stmt = $conexao->prepare("insert into musico_banda (idmusico, idbanda, estado) VALUES (:idmusico, :idbanda, 'ativo')");
+    $stmt = $conexao->prepare("update musico_banda set estado = 'inativo' where idmusico = :idmusico and idbanda = :idbanda");
     $stmt->bindValue(":idmusico", $_SESSION["id"]);
     $stmt->bindValue(":idbanda", $_GET["idbanda"]);
     $stmt->execute();
+    $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $stmt2 = $conexao->prepare("update convitemusico set statusConvite = 'aceito' where banda_idbanda =:idbanda and musico_idmusico = :idmusico");
-    $stmt2->bindValue(":idbanda", $_GET["idbanda"]);
-    $stmt2->bindValue(":idmusico", $_SESSION["id"]);
-    $stmt2->execute();
-    
-    header("location: dashbord.php");
+    header("location: musicobanda.php");
 ?>

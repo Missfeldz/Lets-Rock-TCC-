@@ -16,8 +16,10 @@
 ?>
 
 <?php
-    $stmt = $conexao->prepare("insert into convitemusico (musico_idmusico, banda_idbanda) VALUES (:idmusico, :idbanda)");
+    $stmt = $conexao->prepare("insert into convitemusico (musico_idmusico, banda_idbanda, statusConvite) VALUES (:idmusico, :idbanda, 'aberto')");
     $stmt->bindValue(":idmusico", $_GET["idmusico"]);
     $stmt->bindValue(":idbanda", $_GET["idbanda"]);
     $stmt->execute();
+
+    header("location: dashbord.php");
 ?>

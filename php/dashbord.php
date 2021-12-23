@@ -1,10 +1,23 @@
 <?php
+    //Check sessão//
     session_start();
     if( !isset($_SESSION["usuario"],$_SESSION["email"]) ) {
         header("location: ../HTML/");
     }
     
 ?>
+
+<?php 
+    //DB conexão//
+     date_default_timezone_set("America/Sao_Paulo");
+
+     try{
+         $conexao = new PDO("mysql: host=localhost; port=3306; dbname=letsbd","root","");
+     }catch(PDOExeption $e){
+         echo $e->getMessage();
+     }
+?>
+
 <!DOCTYPE html>
 <html lang="br">
 <head>
@@ -32,6 +45,7 @@
     </div>
     <div id="container">
             <div id="content-container">
+                <!-- Listando valores da sessão--> 
                 <h1> Bem vindo ao seu perfil <i><b><?php echo $_SESSION["usuario"]?></i></b></h1>
                 <h1>Suas Informações: </h1>
                 
@@ -41,9 +55,10 @@
                 <p><i class="fas fa-at"></i> Seu email = <?php echo $_SESSION["email"]?></p> 
                 <p><i class="fas fa-key"></i> Sua senha = <?php echo $_SESSION["senha"]?></p>
                 <p><i class="fas fa-id-card"></i> Seu ID = <?php echo $_SESSION["id"]?></p>  
-                
+
                 <hr>
                 <h1> Suas Opções : </h1>
+                <br>
                 <a href="cadastrarInsGen.php"> Cadastrar Instrumento e Gênero </a>
                 <br>
                 <a href="alterar.php"> Alterar Dados </a>
@@ -54,16 +69,18 @@
                 <br>
                 <a href="dashBanda.php"> Ver suas Bandas </a>
                 <br>
+                <a href="musicoBanda.php"> Ver bandas que você integra </a>
+                <br>
                 <a href="verificarInsMusico.php"> Ver seus convites </a>
                 <br>
                 <a href="listarBandas.php"> Encontrar Bandas</a>
+                <br>
+                <br>
+                <br>
             </div>
     </div>
     
-    <div id="footer">
-            <h4>Desenvolvido por Cauê Missfeld <i class="far fa-copyright"></i></h4> 
-            <a href="../HTML/">Inicio</a>
-    </div>
+    
 
 </body>
 </html>

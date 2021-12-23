@@ -6,7 +6,7 @@
     <script src="https://kit.fontawesome.com/1d33780d26.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="../CSS/dashcss.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Perfil</title>
+    <title>Perfil Admin</title>
 </head>
 <body>
     <div id="header">
@@ -25,7 +25,7 @@
     </div>
     <div id="container">
             <div id="content-container">
-                <h1> ADMIN CONTROLE </h1>                
+                <h1> Controle Administrador </h1>                
                 <hr> 
 
                    <h2>Cadastrar Instrumento</h2>
@@ -34,28 +34,32 @@
                         <input type="submit" value="cadastrar" onclick="return alertAdmin()">
                     </form> 
                     
-                    <h2>Cadastrar Genero</h2>
+                    <h2>Cadastrar Gênero</h2>
                     <form name="genero" action="inserirGenero.php" method="POST">
                         <input type="text" name="genero">
                         <input type="submit" value="cadastrar" onclick="return alertAdmin()">
                     </form>
                 <br>
+                
                 <hr>
-                <h1>Relatorios</h1>
-                <a href="relMusicos.php"> Relatorio de Musico<a>
                 <br>
-                <a href="relBandas.php"> Relatorio de Banda<a>
+
+                <h1>Relatórios</h1>
+                <a href="relMusicos.php"> Relatório de Músicos<a>
                 <br>
-                <a href="relInsGen.php"> Relatorio de Instrumentos e Generos<a>
+                <a href="relBandas.php"> Relatório de Bandas<a>
                 <br>
-                <a href="relConvites.php"> Relatorio de convites<a>
+                <a href="relInsGen.php"> Relatório de Instrumentos e Gêneros<a>
+                <br>
+                <a href="relConvites.php"> Relatório de Convites<a>
+                <br>
+                <br>
+                <br>
+                
+                
             </div>
     </div>
-    
-    <div id="footer">
-            <h4>Desenvolvido por Cauê Missfeld <i class="far fa-copyright"></i></h4> 
-            <a href="../HTML/">Inicio</a>
-    </div>
+   
 
 </body>
 </html>

@@ -1,3 +1,26 @@
+<?php
+    session_start();
+    if( !isset($_SESSION["usuario"],$_SESSION["email"]) ) {
+        header("location: ../HTML/");
+    }
+?>
+
 <?php 
-    echo "Isso esta funcionando!";
+     date_default_timezone_set("America/Sao_Paulo");
+
+     try{
+         $conexao = new PDO("mysql: host=localhost; port=3306; dbname=letsbd","root","");
+     }catch(PDOExeption $e){
+         echo $e->getMessage();
+     }
+?>
+
+<?php
+    $stmt = $conexao->prepare("update convitemusico set statusConvite = 'recusado' where banda_idbanda =:idbanda and musico_idmusico = :idmusico");
+    $stmt->bindValue(":idbanda", $_GET["idbanda"]);
+    $stmt->bindValue(":idmusico", $_SESSION["id"]);
+    $stmt->execute();
+    
+    header("location: dashbord.php");
+
 ?>

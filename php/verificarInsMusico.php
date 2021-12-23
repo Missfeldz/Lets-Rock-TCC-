@@ -16,7 +16,7 @@
 ?>
 
 <?php
-    $stmt = $conexao->prepare("select musico_idmusico, banda_idbanda from convitemusico WHERE musico_idmusico = :idmusico");
+    $stmt = $conexao->prepare("select musico_idmusico, banda_idbanda from convitemusico WHERE musico_idmusico = :idmusico and statusConvite = 'aberto'");
     $stmt->bindValue(":idmusico", $_SESSION["id"]);
     $stmt->execute();
     $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -72,15 +72,11 @@
               <hr>
               <?php echo "<br/>"; }; ?> 
             
-                <h1> Suas Opções : </h1>
+                
                 
             </div>
     </div>
     
-    <div id="footer">
-            <h4>Desenvolvido por Cauê Missfeld <i class="far fa-copyright"></i></h4> 
-            <a href="../HTML/">Inicio</a>
-    </div>
-
+    
 </body>
 </html>

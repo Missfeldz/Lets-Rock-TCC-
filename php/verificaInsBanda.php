@@ -68,19 +68,16 @@
               <p>  <?php echo " Cidade = ".$value2["cidade"]; ?> </p> 
               <?php echo "<br/>"; }; ?> 
                 <?php echo "<a title='aceitar' href='aceitarBanda.php?idmusico={$value["idmusico"]}&idbanda={$_GET["idbanda"]}'> Aceitar </a> "; ?> 
-                <?php echo "<a title='recusar' href='recusarBanda.php?idmusico={$value["idmusico"]}'> Recusar </a> "; ?> 
+                <?php echo "<a title='recusar' href='recusarBanda.php?idmusico={$value["idmusico"]}&idbanda={$_GET["idbanda"]}'> Recusar </a> "; ?> 
               <hr>
               <?php echo "<br/>"; }; ?> 
             
-                <h1> Suas Opções : </h1>
+               
                 
             </div>
     </div>
     
-    <div id="footer">
-            <h4>Desenvolvido por Cauê Missfeld <i class="far fa-copyright"></i></h4> 
-            <a href="../HTML/">Inicio</a>
-    </div>
+   
 
 </body>
 </html>

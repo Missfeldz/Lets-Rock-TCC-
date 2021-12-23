@@ -48,31 +48,81 @@
 
     foreach($resultado as $value){
         echo " ID musico = ".$value["idmusico"];
+           
+            $stmt2 = $conexao->prepare("select * from musico where idmusico = :idmusico");
+            $stmt2->bindValue(":idmusico", $value["idmusico"]);
+            $stmt2->execute();
+            $resultado2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+            
+            foreach($resultado2 as $value2){
+             echo "<br/>";
+             echo "Nome do Musico que se inscreveu = ".$value2["nome"];   
+             echo "<br/>";
+             echo "E-Mail do Musico que se inscreveu = ".$value2["email"]; 
+             echo "<br/>";  
+            };
+
         echo "<br/>";
         echo " ID banda = ".$value["idbanda"];
+
+            $stmt3 = $conexao->prepare("select * from banda where idbanda = :idbanda");
+            $stmt3->bindValue(":idbanda", $value["idbanda"]);
+            $stmt3->execute();
+            $resultado3 = $stmt3->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach($resultado3 as $value3){
+                echo "<br/>";
+                echo "Nome da Banda = ".$value3["nomeBanda"];   
+                echo "<br/>";  
+               };
         echo "<br/>";
         echo " Status do convite = ".$value["statusConvite"];
-        echo "<br/>";
+        echo "<hr>";
         echo "<br/>";
     };
 ?>
-<br>
-<hr>
+<br/>
 <h2> Convites realizados por Bandas </h2>
 <br/>
 <?php 
 
-    $stmt2 = $conexao->prepare("select musico_idmusico, banda_idbanda, statusConvite from convitemusico");
-    $stmt2->execute();   
-    $resultado2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+    $stmt4 = $conexao->prepare("select musico_idmusico, banda_idbanda, statusConvite from convitemusico");
+    $stmt4->execute();   
+    $resultado4 = $stmt4->fetchAll(PDO::FETCH_ASSOC);
 
-    foreach($resultado2 as $value2){
-        echo " ID = ".$value2["musico_idmusico"];
+    foreach($resultado4 as $value4){
+        echo " ID = ".$value4["musico_idmusico"];
+           
+            $stmt5 = $conexao->prepare("select * from musico where idmusico = :idmusico");
+            $stmt5->bindValue(":idmusico", $value4["musico_idmusico"]);
+            $stmt5->execute();
+            $resultado5 = $stmt5->fetchAll(PDO::FETCH_ASSOC);
+            
+            foreach($resultado5 as $value5){
+            echo "<br/>";
+            echo "Nome do Musico  = ".$value5["nome"];   
+            echo "<br/>";
+            echo "E-Mail do Musico  = ".$value5["email"]; 
+            echo "<br/>";  
+            };
+        
         echo "<br/>";
-        echo " Nome = ".$value2["banda_idbanda"];
+        echo " Id da Banda = ".$value4["banda_idbanda"];
+
+            $stmt6 = $conexao->prepare("select * from banda where idbanda = :idbanda");
+            $stmt6->bindValue(":idbanda", $value4["banda_idbanda"]);
+            $stmt6->execute();
+            $resultado6 = $stmt6->fetchAll(PDO::FETCH_ASSOC);
+            
+            foreach($resultado6 as $value6){
+            echo "<br/>";
+            echo "Nome da Banda = ".$value6["nomeBanda"];   
+            echo "<br/>";
+            };
+
         echo "<br/>";
-        echo " Nome = ".$value2["statusConvite"];
-        echo "<br/>";
+        echo " Status do Convite = ".$value4["statusConvite"];
+        echo "<hr/>";
         echo "<br/>";
     };
 ?>

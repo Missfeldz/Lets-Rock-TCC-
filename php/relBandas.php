@@ -56,6 +56,25 @@
         echo "<br/>";
         echo " Cidade = ".$value["cidadeBanda"];
         echo "<br/>";
+        
+        $stmt2 = $conexao->prepare("select idgenero from banda_genero where idbanda = :idbanda");
+        $stmt2->bindValue(":idbanda", $value["idbanda"]);
+        $stmt2->execute();   
+        $resultado2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($resultado2 as $value2) {
+            
+            $stmt3 = $conexao->prepare("select descGen from genero where idgenero = :idgenero");
+            $stmt3->bindValue(":idgenero", $value2["idgenero"]);
+            $stmt3->execute();   
+            $resultado3 = $stmt3->fetchAll(PDO::FETCH_ASSOC);
+            
+            foreach ($resultado3 as $value3){
+            echo " Genero = ".$value3["descGen"];
+            echo "<br/>";
+            };
+        };
+
         echo "<hr>";
     };
 ?>

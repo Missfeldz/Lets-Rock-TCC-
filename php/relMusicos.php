@@ -56,10 +56,46 @@
         echo "<br/>";
         echo " Cidade = ".$value["cidade"];
         echo "<br/>";
+        
+        $stmt2 = $conexao->prepare("select idinstrumento from musico_instrumento where idmusico = :idmusico");
+        $stmt2->bindValue(":idmusico", $value["idmusico"]);
+        $stmt2->execute();   
+        $resultado2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach($resultado2 as $value2){
+            
+            $stmt3 = $conexao->prepare("select descIns from instrumento where idinstrumento = :idinstrumento");
+            $stmt3->bindValue(":idinstrumento", $value2["idinstrumento"]);
+            $stmt3->execute();   
+            $resultado3 = $stmt3->fetchAll(PDO::FETCH_ASSOC);
+            
+            foreach ($resultado3 as $value3) {
+                echo " Instrumento = ".$value3["descIns"];
+                echo "<br/>";
+            };
+        };
+        
+        $stmt4 = $conexao->prepare("select idgenero from musico_genero where idmusico = :idmusico");
+        $stmt4->bindValue(":idmusico", $value["idmusico"]);
+        $stmt4->execute();   
+        $resultado4 = $stmt4->fetchAll(PDO::FETCH_ASSOC);
+            
+            foreach ($resultado4 as $value4) {
+                
+                $stmt5 = $conexao->prepare("select descGen from genero where idgenero = :idgenero");
+                $stmt5->bindValue(":idgenero", $value4["idgenero"]);
+                $stmt5->execute();   
+                $resultado5 = $stmt5->fetchAll(PDO::FETCH_ASSOC);
+
+                foreach ($resultado5 as $value5) {
+                    echo " Genero = ".$value5["descGen"];
+                    echo "<br/>";
+                };
+            };
+        
         echo "<hr>";
     };
 ?>
-
 </div>
 </body>
 </html>

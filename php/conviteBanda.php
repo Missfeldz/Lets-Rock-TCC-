@@ -20,4 +20,7 @@
     $stmt->bindValue(":idmusico", $_SESSION["id"]);
     $stmt->bindValue(":idbanda", $_GET["idbanda"]);
     $stmt->execute();
+
+    header("location: dashbord.php");
 ?>
+    

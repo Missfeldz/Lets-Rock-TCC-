@@ -74,8 +74,6 @@
               <?php echo "<br/>"; }; ?> 
               <?php  }; ?>
             
-                <h1> Suas Opções : </h1>
-
             </div>
     </div>
     

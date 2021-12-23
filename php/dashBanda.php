@@ -1,4 +1,5 @@
 <?php
+    //Check sessão//
     session_start();
     if( !isset($_SESSION["usuario"],$_SESSION["email"]) ) {
         header("location: ../HTML/");
@@ -7,7 +8,7 @@
 ?>
 
 <?php 
-    //DB Connection//
+    //DB conexão//
      date_default_timezone_set("America/Sao_Paulo");
 
      try{
@@ -18,6 +19,7 @@
 ?>
 
 <?php
+    //Querry receber valores das bandas do usuário//
     $stmt = $conexao->prepare("select idbanda, nomeBanda, estadoBanda cidadeBanda from banda where idlider = :idlider");
     $stmt->bindValue(":idlider", $_SESSION["id"]);
     $stmt->execute();
@@ -59,7 +61,7 @@
               <p>  <?php echo " ID = ".$value["idbanda"]; ?> </p>
               <p>  <?php echo "<a  href='verificaInsBanda.php?idbanda={$value["idbanda"]}'> Verificar Inscrições </a> "; ?> </p>
               <p>  <?php echo "<a  href='listarMusicos.php?idbanda={$value["idbanda"]}'> Encontrar Musicos </a> "; ?> </p>
-              <p>  <?php echo "<a  href='cadastrarGenBanda.php?idbanda={$value["idbanda"]}'> Cadastrar Genero Musical da Banda </a> "; ?> </p>
+              <p>  <?php echo "<a  href='cadastrarGenBanda.php?idbanda={$value["idbanda"]}'> Cadastrar Gênero Musical da Banda </a> "; ?> </p>
               <p>  <?php echo "<a  href='gerenciarBanda.php?idbanda={$value["idbanda"]}'> Gerenciar Banda </a> "; ?> </p>
               <hr>
               <?php echo "<br/>"; }; ?> 
@@ -71,10 +73,6 @@
             </div>
     </div>
     
-    <div id="footer">
-            <h4>Desenvolvido por Cauê Missfeld <i class="far fa-copyright"></i></h4> 
-            <a href="../HTML/">Inicio</a>
-    </div>
-
+    
 </body>
 </html>

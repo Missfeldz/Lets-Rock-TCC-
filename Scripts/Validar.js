@@ -6,7 +6,6 @@ function validarCadastro () {
     var estado = formCadastro.estado.value;
     var cidade = formCadastro.cidade.value;
 
-
     if(nome == ''){
         alertify.alert('Preencha o campo nome.');
         formCadastro.nome.focus();
@@ -30,7 +29,6 @@ function validarCadastro () {
         formCadastro.password.focus();
         return false;
     }
-
 
     if(pais == ''){
         alert('Preencha o campo pais.');
